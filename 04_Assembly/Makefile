@@ -1,11 +1,13 @@
-scanner: expr.c interp.c main.c scan.c
-	cc -o parser -g expr.c interp.c main.c scan.c tree.c
-clean:
-	rm -f parser *.o
+comp1: cg.c expr.c gen.c interp.c main.c scan.c tree.c
+	cc -o comp1 -g cg.c expr.c gen.c interp.c main.c scan.c tree.c
 
-test: parser
-	-(./parser test/input01; \
-	  ./parser test/input02; \
-	  ./parser test/input03; \
-	  ./parser test/input04; \
-	  ./parser test/input05)
+clean:
+	rm -f comp1 compn *.o *.s out
+
+test: comp1
+	./comp1 test/input01
+	cc -o out out.s
+	./out
+	./comp1 test/input02
+	cc -o out out.s
+	./out
