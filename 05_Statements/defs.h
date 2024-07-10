@@ -14,7 +14,9 @@ enum {
     T_MINUS,
     T_STAR,
     T_SLASH,
-    T_INTLIT
+    T_INTLIT,
+    T_SEMI,
+    T_PRINT
 };
 
 enum {

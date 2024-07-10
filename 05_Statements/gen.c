@@ -2,7 +2,7 @@
 #include "data.h"
 #include "decl.h"
 
-static int genAST(struct ASTnode *n) {
+int genAST(struct ASTnode *n) {
     int leftreg, rightreg;
 
     if (n->left) {
@@ -36,4 +36,19 @@ void generatecode(struct ASTnode *n) {
     reg = genAST(n);
     cgprintint(reg);
     cgpostamble();
+}
+void genpreamble() {
+    cgpreamble();
+}
+
+void genpostamble() {
+    cgpostamble();
+}
+
+void genfreeregs() {
+    freeall_registers();
+}
+
+void genprintint(int reg) {
+    cgprintint(reg);
 }
